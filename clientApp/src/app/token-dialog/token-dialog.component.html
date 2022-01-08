@@ -1,0 +1,37 @@
+<form (ngSubmit)="close(data)">
+
+    <mat-dialog-content>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Url base</mat-label>
+            <input type="text"
+                matInput
+                [(ngModel)]="data.urlBase"
+                [ngModelOptions]="{ standalone: true }">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Auth Token</mat-label>
+            <input type="text"
+                matInput
+                [(ngModel)]="data.token"
+                [ngModelOptions]="{ standalone: true }">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Query string</mat-label>
+            <input matInput
+                [(ngModel)]="data.query"
+                [ngModelOptions]="{ standalone: true }">
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button
+            (click)="close()"
+            type="button">Close</button>
+        <button mat-button
+            type="submit">Submit</button>
+    </mat-dialog-actions>
+
+</form>

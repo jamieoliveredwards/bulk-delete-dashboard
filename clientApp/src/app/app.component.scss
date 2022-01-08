@@ -1,0 +1,19 @@
+:host {
+    display: block;
+
+    table {
+        width: 100%;
+    }
+
+    button.delete-button {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    button.token-button {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+    }
+}

@@ -1,0 +1,67 @@
+<ng-container *ngIf="dataSource | async as data">
+
+  <table mat-table
+    [dataSource]="data">
+
+    <ng-container matColumnDef="selection"
+      class="mat-elevation-z8">
+      <th mat-header-cell
+        *matHeaderCellDef>
+        <button *ngIf="data.length"
+          mat-raised-button
+          (click)="toggleSelect(data)">Select All</button>
+      </th>
+      <td mat-cell
+        *matCellDef="let element">
+        <input type="checkbox"
+          [(ngModel)]="element.selected">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name"
+      class="mat-elevation-z8">
+      <th mat-header-cell
+        *matHeaderCellDef>Name</th>
+      <td mat-cell
+        *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell
+        *matHeaderCellDef>ID</th>
+      <td mat-cell
+        *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell
+        *matHeaderCellDef></th>
+      <td mat-cell
+        *matCellDef="let element">
+        <button mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row
+      *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+      *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <button class="delete-button"
+    [disabled]="!token"
+    mat-raised-button
+    color="warn"
+    (click)="deleteEntries(data)">Delete Selected</button>
+
+</ng-container>
+
+<button class="token-button"
+  mat-fab
+  color="primary"
+  (click)="openTokenDialog()">
+  <mat-icon>settings</mat-icon>
+</button>
